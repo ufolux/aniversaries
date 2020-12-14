@@ -399,7 +399,7 @@
         	ctx.restore();
 
             rec.point = new Point(i, j);
-            rec.speed = speed * 0.95;
+            rec.speed = speed * 1;
 
             if (rec.speed < 2) {
                 rec.speed = 2;
@@ -414,14 +414,14 @@
                     blooms[i].jump();
                 }
             } 
-            if ((blooms.length && blooms.length < 3) || !blooms.length) {
+            if ((blooms.length && blooms.length < 10) || !blooms.length) {
                 var bloom = this.opt.bloom || {},
                     width = bloom.width || this.width,
                     height = bloom.height || this.height,
                     figure = this.seed.heart.figure;
                 var r = 340, x, y;
                 for (var i = 0; i < random(1,2); i++) {
-                    blooms.push(this.createBloom(width / 2 + width, height, r, figure, null, 1, null, 1, new Point(random(-100,600), 720), random(200,300)));
+                    blooms.push(this.createBloom(width / 2 + width, height, r, figure, null, 1, null, 1, new Point(random(-100,600), 1300), random(200,300)));
                 }
             }
         }
@@ -513,7 +513,6 @@
         },
         jump: function() {
             var s = this, height = s.tree.height;
-
             if (s.point.x < -20 || s.point.y > height + 20) {
                 s.tree.removeBloom(s);
             } else {
